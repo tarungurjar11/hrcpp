@@ -1,0 +1,39 @@
+//https://practice.geeksforgeeks.org/problems/subarray-with-given-sum/0
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n,s;
+	    cin>>n>>s;
+	    int arr[n];
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>arr[i];
+	    }
+	    int sum = 0;
+        int l =0, r = 0;
+        while (r < n)
+        {
+            sum += arr[r] ;
+
+            while(sum > s)
+                sum -= arr[l++];
+
+            if (sum == s)
+                break;
+
+                r++;
+        }
+	    if(sum==s)
+	        printf("%d %d\n",l+1,r+1);
+	    else
+	        printf("%d\n",-1);
+	}
+	return 0;
+}
